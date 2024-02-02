@@ -1,0 +1,60 @@
+version(1);
+
+project_name = "new horizons";
+
+patterns = {
+    "*.c",
+    "*.cpp",
+    "*.h",
+    "*.bat",
+    "*.hlsl",
+    "*.txt",
+    "*.4coder"
+};
+
+blacklist_patterns = {
+    ".*"
+};
+
+load_paths = {
+    { { { "..\\.", .relative = true, .recursive = true, } }, .os = "win" }
+};
+
+command_list = {
+    {
+        .name = "build",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd = {
+            { "..\\code\\build.bat", .os = "win" },
+        }
+    },
+    
+    {
+        .name = "todo_check",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd = {
+            { "..\\code\\todo_check.bat", .os = "win" }
+        }
+    },
+    
+    {
+        .name = "static_check",
+        .out = "*compilation*",
+        .footer_panel = true,
+        .save_dirty_files = true,
+        .cursor_at_end = false,
+        .cmd = {
+            { "..\\code\\static_check.bat", .os = "win" }
+        }
+    }
+};
+
+fkey_command[1] = "build";
+fkey_command[2] = "todo_check";
+fkey_command[3] = "static_check";
